@@ -55,7 +55,11 @@ class Data: NSObject{
                 }
               }
               else{
-                completionHandler(persons, nil)
+//                let firstNameSortDescriptor = NSSortDescriptor(key: "firstname", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+//                (persons as? NSArray).sortDescriptors = [firstNameSortDescriptor]
+                let personsSorted: [Person] = (persons?.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })!
+//                persons?.sort({ $0.firstname > $1.firstname })
+                completionHandler(personsSorted, nil)
               }
             }
           }
@@ -73,7 +77,8 @@ class Data: NSObject{
           }
           if let persons:NSArray = json?[personKey] as? NSArray{
             let personsCD: [Person] = self.savePersons(persons: persons)
-            completionHandler(personsCD, nil)
+            let personsCDSorted: [Person] = (personsCD.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })
+            completionHandler(personsCDSorted, nil)
             
           }
         }
