@@ -18,11 +18,11 @@
 		8A231F031D8C26130090AAFF /* L.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A231F011D8C26130090AAFF /* L.swift */; };
 		8A584AF91D900DEB008ADA98 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A584AF81D900DEB008ADA98 /* Media.xcassets */; };
 		8A9ED43E1D8EE6DB00B776F4 /* profil.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9ED43D1D8EE6DB00B776F4 /* profil.png */; };
-		8A9ED4531D8F3AF400B776F4 /* PhoneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ED4511D8F3AF400B776F4 /* PhoneList.xcdatamodeld */; };
-		8A9ED4581D8F3B5B00B776F4 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ED4541D8F3B5B00B776F4 /* Person+CoreDataClass.swift */; };
-		8A9ED4591D8F3B5B00B776F4 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ED4551D8F3B5B00B776F4 /* Person+CoreDataProperties.swift */; };
-		8A9ED45A1D8F3B5B00B776F4 /* Version+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ED4561D8F3B5B00B776F4 /* Version+CoreDataClass.swift */; };
-		8A9ED45B1D8F3B5B00B776F4 /* Version+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9ED4571D8F3B5B00B776F4 /* Version+CoreDataProperties.swift */; };
+		8AA3CF9F1D91284400B0FF0C /* PhoneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */; };
+		8AA3CFA41D91289700B0FF0C /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA01D91289700B0FF0C /* Person+CoreDataClass.swift */; };
+		8AA3CFA51D91289700B0FF0C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */; };
+		8AA3CFA61D91289700B0FF0C /* Version+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */; };
+		8AA3CFA71D91289700B0FF0C /* Version+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,11 +60,11 @@
 		8A231F011D8C26130090AAFF /* L.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L.swift; sourceTree = "<group>"; };
 		8A584AF81D900DEB008ADA98 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8A9ED43D1D8EE6DB00B776F4 /* profil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profil.png; sourceTree = "<group>"; };
-		8A9ED4521D8F3AF400B776F4 /* PhoneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneList.xcdatamodel; sourceTree = "<group>"; };
-		8A9ED4541D8F3B5B00B776F4 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8A9ED4551D8F3B5B00B776F4 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8A9ED4561D8F3B5B00B776F4 /* Version+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8A9ED4571D8F3B5B00B776F4 /* Version+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneList.xcdatamodel; sourceTree = "<group>"; };
+		8AA3CFA01D91289700B0FF0C /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,11 +165,11 @@
 		8A231ED71D8C201F0090AAFF /* models */ = {
 			isa = PBXGroup;
 			children = (
-				8A9ED4541D8F3B5B00B776F4 /* Person+CoreDataClass.swift */,
-				8A9ED4551D8F3B5B00B776F4 /* Person+CoreDataProperties.swift */,
-				8A9ED4561D8F3B5B00B776F4 /* Version+CoreDataClass.swift */,
-				8A9ED4571D8F3B5B00B776F4 /* Version+CoreDataProperties.swift */,
-				8A9ED4511D8F3AF400B776F4 /* PhoneList.xcdatamodeld */,
+				8AA3CFA01D91289700B0FF0C /* Person+CoreDataClass.swift */,
+				8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */,
+				8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */,
+				8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */,
+				8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -346,15 +346,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9ED45B1D8F3B5B00B776F4 /* Version+CoreDataProperties.swift in Sources */,
+				8AA3CFA71D91289700B0FF0C /* Version+CoreDataProperties.swift in Sources */,
 				8A231F031D8C26130090AAFF /* L.swift in Sources */,
-				8A9ED4581D8F3B5B00B776F4 /* Person+CoreDataClass.swift in Sources */,
+				8AA3CFA41D91289700B0FF0C /* Person+CoreDataClass.swift in Sources */,
 				8A231EDF1D8C201F0090AAFF /* AppDelegate.swift in Sources */,
 				8A231EE51D8C21980090AAFF /* Data.swift in Sources */,
-				8A9ED4591D8F3B5B00B776F4 /* Person+CoreDataProperties.swift in Sources */,
-				8A9ED45A1D8F3B5B00B776F4 /* Version+CoreDataClass.swift in Sources */,
+				8AA3CFA51D91289700B0FF0C /* Person+CoreDataProperties.swift in Sources */,
+				8AA3CFA61D91289700B0FF0C /* Version+CoreDataClass.swift in Sources */,
 				8A231EFE1D8C259B0090AAFF /* ListViewController.swift in Sources */,
-				8A9ED4531D8F3AF400B776F4 /* PhoneList.xcdatamodeld in Sources */,
+				8AA3CF9F1D91284400B0FF0C /* PhoneList.xcdatamodeld in Sources */,
 				8A231F021D8C26130090AAFF /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,12 +636,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8A9ED4511D8F3AF400B776F4 /* PhoneList.xcdatamodeld */ = {
+		8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8A9ED4521D8F3AF400B776F4 /* PhoneList.xcdatamodel */,
+				8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */,
 			);
-			currentVersion = 8A9ED4521D8F3AF400B776F4 /* PhoneList.xcdatamodel */;
+			currentVersion = 8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */;
 			path = PhoneList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

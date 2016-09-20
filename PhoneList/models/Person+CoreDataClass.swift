@@ -2,7 +2,7 @@
 //  Person+CoreDataClass.swift
 //  PhoneList
 //
-//  Created by Vincent PUGET on 18/09/2016.
+//  Created by Vincent PUGET on 20/09/2016.
 //  Copyright © 2016 Vincent PUGET. All rights reserved.
 //
 

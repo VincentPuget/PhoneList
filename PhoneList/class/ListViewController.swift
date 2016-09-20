@@ -19,7 +19,6 @@ class ListViewController: NSViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     self.getData()
   }
   
@@ -99,7 +98,7 @@ extension ListViewController: NSSearchFieldDelegate{
     
 //    let arraySearch:[String] = searchString.components(separatedBy: " ")
     
-    let predicate = NSPredicate(format: "(firstname CONTAINS[cd] %@) OR (lastname CONTAINS[cd] %@) ", searchString, searchString)
+    let predicate = NSPredicate(format: "(firstname CONTAINS[cd] %@) OR (lastname CONTAINS[cd] %@) OR (fullname CONTAINS[cd] %@)", searchString, searchString, searchString)
     
     if searchString != "" {
       self.personsAC.filterPredicate = predicate
