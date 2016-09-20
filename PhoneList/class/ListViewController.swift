@@ -19,6 +19,7 @@ class ListViewController: NSViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+//    Data.instance.dropAll()
     self.getData()
   }
   
@@ -29,17 +30,18 @@ class ListViewController: NSViewController {
   }
   
   func getData(){
-    DispatchQueue.main.async {
-      Data.instance.getPersons(){ (persons, error) -> Void in
-        if(error != nil) {
-          if(error?.code == 8000){
-            self.getData()
-          }
+//    DispatchQueue.main.async {
+//      
+//    }
+    Data.instance.getPersons(){ (persons, error) -> Void in
+      if(error != nil) {
+        if(error?.code == 8000){
+          self.getData()
         }
-        else{
-          self.personsAC.content = persons
-          self.tableView.reloadData()
-        }
+      }
+      else{
+        self.personsAC.content = persons
+        self.tableView.reloadData()
       }
     }
   }
@@ -93,10 +95,7 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
 
 extension ListViewController: NSSearchFieldDelegate{
   override func controlTextDidChange(_ obj: Notification){
-    print("controlTextDidChange")
     let searchString = ((obj.object as? NSSearchField)?.stringValue)!
-    
-//    let arraySearch:[String] = searchString.components(separatedBy: " ")
     
     let predicate = NSPredicate(format: "(firstname CONTAINS[cd] %@) OR (lastname CONTAINS[cd] %@) OR (fullname CONTAINS[cd] %@)", searchString, searchString, searchString)
     
