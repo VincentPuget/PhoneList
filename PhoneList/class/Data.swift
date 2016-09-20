@@ -31,14 +31,13 @@ class Data: NSObject{
       
       //if version stored in coredata, we add version on url request
       if(error == nil){
-        url = url + Const.Webservice.PHONE_ENDPOINT_$GET_VERSION + "="
+        url = url + Const.Webservice.PHONE_ENDPOINT_$GET_VERSION + "=" + version!
       }
       print(url)
       //get json online
       self.getOnlineData(url: url) { (json, error) -> Void in
         if(error != nil){
           if(error?.code == 3000 || error?.code == 1000 || error?.code == 2000){
-            L.v(error?.domain as AnyObject!)
             //if 3000 error ==> it mean 304 || error JSON || error network
             // get coredata data
             self.getPersonsCoreData(){ (persons, error) -> Void in
@@ -127,6 +126,7 @@ class Data: NSObject{
   func getOnlineData(url: String!, completionHandler: @escaping (AnyObject?, NSError?) -> Void ) -> Void {
     let requestURL: NSURL = NSURL(string: url)!
     let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
+    urlRequest.setValue(Const.Webservice.X_JSON_MD5_VALUE, forHTTPHeaderField:Const.Webservice.X_JSON_MD5_KEY)
     let session = URLSession.shared
     let task = session.dataTask(with: urlRequest as URLRequest) {
       (data, response, error) -> Void in
@@ -217,7 +217,7 @@ class Data: NSObject{
       if(fetchResults.count > 0){
         for data:AnyObject in fetchResults
         {
-          nsAppDelegate.managedObjectContext.delete(data as! Person)
+          nsAppDelegate.managedObjectContext.delete(data as! Version)
         }
       }
     }
