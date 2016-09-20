@@ -1,0 +1,10 @@
+/* 
+  LocalizableStrings.strings
+  PhoneList
+
+  Created by Vincent PUGET on 16/09/2016.
+  Copyright © 2016 Vincent PUGET. All rights reserved.
+*/
+
+"cancel" = "ANNULER";
+"ok" = "OK";
