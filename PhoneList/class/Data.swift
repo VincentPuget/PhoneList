@@ -76,10 +76,10 @@ class Data: NSObject{
             _ = self.saveVersion(version: versionFromUrl)
           }
           if let persons:NSArray = json?[personKey] as? NSArray{
+            _ = self.dropAll()
             let personsCD: [Person] = self.savePersons(persons: persons)
             let personsCDSorted: [Person] = (personsCD.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })
             completionHandler(personsCDSorted, nil)
-            
           }
         }
       }
