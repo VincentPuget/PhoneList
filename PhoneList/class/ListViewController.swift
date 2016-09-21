@@ -15,16 +15,15 @@ class ListViewController: NSViewController {
   @IBOutlet weak var scrollView: NSScrollView!
   
   var json:AnyObject!;
-  
   var personsAC:NSArrayController = NSArrayController()
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
 //    Data.instance.dropAll()
     
-    self.scrollView.wantsLayer = true
-    self.scrollView.layer?.cornerRadius = 10
+    self.initUI()
     
     self.getData()
   }
@@ -35,6 +34,16 @@ class ListViewController: NSViewController {
     }
   }
   
+  func initUI(){
+    DispatchQueue.main.async {
+      
+      
+      self.scrollView.wantsLayer = true
+      self.scrollView.layer?.cornerRadius = 10
+    }
+
+  }
+  
   func getData(){
     Data.instance.getPersons(){ (persons, error) -> Void in
       if(error != nil) {
@@ -43,7 +52,7 @@ class ListViewController: NSViewController {
         }
       }
       else{
-        self.personsAC.content = persons
+        self.personsAC.content = persons!
         DispatchQueue.main.async {
           self.tableView.reloadData()
         }
@@ -70,11 +79,14 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
     return customRow
   }
   
-//  func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
-//    if(row % 2 == 1) {
-//      rowView.backgroundColor = NSColor.init(red: 164/255, green: 57/255, blue: 75/255, alpha: 1)
-//    }
-//  }
+  func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
+    if(row % 2 == 1) {
+      rowView.backgroundColor = NSColor.init(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.5)
+    }
+    else {
+      rowView.backgroundColor = NSColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
+    }
+  }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
     let cellView: NSTableCellView = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView

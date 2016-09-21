@@ -26,9 +26,7 @@ class Data: NSObject{
   func getPersons(completionHandler: @escaping ([Person]?, NSError?) -> Void ) -> Void {
     //get hash of web data
     getMd5CoreData(){ (version, error) -> Void in
-      
       var url: String! = Const.Webservice.URL + Const.Webservice.PHONE_ENDPOINT + "?"
-      
       //if version stored in coredata, we add version on url request
       if(error == nil){
         url = url + Const.Webservice.PHONE_ENDPOINT_$GET_VERSION + "=" + version!
@@ -55,10 +53,7 @@ class Data: NSObject{
                 }
               }
               else{
-//                let firstNameSortDescriptor = NSSortDescriptor(key: "firstname", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
-//                (persons as? NSArray).sortDescriptors = [firstNameSortDescriptor]
                 let personsSorted: [Person] = (persons?.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })!
-//                persons?.sort({ $0.firstname > $1.firstname })
                 completionHandler(personsSorted, nil)
               }
             }
