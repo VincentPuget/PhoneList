@@ -37,6 +37,7 @@ class ListViewController: NSViewController {
   func initUI(){
     DispatchQueue.main.async {
       
+      self.view.window!.standardWindowButton(NSWindowButton.documentIconButton)?.isHidden = true
       
       self.scrollView.wantsLayer = true
       self.scrollView.layer?.cornerRadius = 10
@@ -98,7 +99,14 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
     {
       cellView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
       cellView.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-      cellView.imageView?.image = NSImage(named:"profil.png")
+      
+      if(person.photo != ""){
+        cellView.imageView?.downloadedFrom(link: person.photo!)
+      }
+      else{
+        cellView.imageView?.image = NSImage(named:"profil.png")
+      }
+      
       tableColumn?.headerCell.title = "Photo"
     }
     else if(tableColumn!.identifier == "firstname")
@@ -119,12 +127,12 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
     
     return cellView
   }
+  
 }
 
 extension ListViewController: NSSearchFieldDelegate{
   override func controlTextDidChange(_ obj: Notification){
     let searchString = ((obj.object as? NSSearchField)?.stringValue)!
-    
     let predicate = NSPredicate(format: "(firstname CONTAINS[cd] %@) OR (lastname CONTAINS[cd] %@) OR (fullname CONTAINS[cd] %@)", searchString, searchString, searchString)
     
     if searchString != "" {
@@ -135,5 +143,45 @@ extension ListViewController: NSSearchFieldDelegate{
     }
     self.tableView.reloadData()
   }
-  
 }
+
+extension NSImageView {
+  func downloadedFrom(link: String) -> Void {
+    let requestURL: NSURL = NSURL(string: link)!
+    let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
+    URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data, response, error) -> Void in
+      let httpResponse: HTTPURLResponse! = response as! HTTPURLResponse
+      let statusCode: Int! = httpResponse.statusCode
+      if (statusCode == 200) {
+        let data = data;
+        var image = NSImage(data: data!)
+        image = ListViewController.setMask(image: image, mask: NSImage(named:"mask.png")!)
+        self.image = image
+      }
+      else{
+        self.image = NSImage(named:"profil.png")
+      }
+    }.resume()
+    return
+  }
+}
+
+
+extension ListViewController{
+  public static func setMask(image: NSImage!, mask: NSImage! ) -> NSImage {
+    
+    let imageSource = CGImageSourceCreateWithData((image.tiffRepresentation as! CFData), nil)
+    let imageRef = CGImageSourceCreateImageAtIndex(imageSource!, 0, nil)
+    
+    let maskSource = CGImageSourceCreateWithData((mask.tiffRepresentation as! CFData), nil)
+    let maskRef = CGImageSourceCreateImageAtIndex(maskSource!, 0, nil)
+    
+    
+    let cgMask: CGImage! = CGImage(maskWidth: maskRef!.width, height: maskRef!.height, bitsPerComponent: maskRef!.bitsPerComponent, bitsPerPixel: maskRef!.bitsPerPixel, bytesPerRow: maskRef!.bytesPerRow, provider: maskRef!.dataProvider!, decode: nil, shouldInterpolate: false)!
+    let cgImageMasked: CGImage! = imageRef!.masking(cgMask)!
+    let imageMasked = NSImage(cgImage: cgImageMasked, size: NSSize(width: cgImageMasked.width, height: cgImageMasked.height))
+    
+    return  imageMasked
+  }
+}
+

@@ -71,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var coordinator: NSPersistentStoreCoordinator? = nil
     if failError == nil {
       coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-      let url = self.applicationDocumentsDirectory.appendingPathComponent("PhoneList_2.storedata")
+      let url = self.applicationDocumentsDirectory.appendingPathComponent("PhoneList.storedata")
       do {
         try coordinator!.addPersistentStore(ofType: NSXMLStoreType, configurationName: nil, at: url, options: nil)
       } catch {

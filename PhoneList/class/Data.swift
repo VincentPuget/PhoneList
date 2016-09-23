@@ -64,14 +64,13 @@ class Data: NSObject{
           }
         }
         else {
+          _ = self.dropAll()
           let personKey: String! = Const.Webservice.PERSON_KEY
           let versionKey: String! = Const.Webservice.VERSION_KEY
-          
           if let versionFromUrl: String = json?[versionKey] as? String{
             _ = self.saveVersion(version: versionFromUrl)
           }
           if let persons:NSArray = json?[personKey] as? NSArray{
-            _ = self.dropAll()
             let personsCD: [Person] = self.savePersons(persons: persons)
             let personsCDSorted: [Person] = (personsCD.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })
             completionHandler(personsCDSorted, nil)
@@ -208,9 +207,8 @@ class Data: NSObject{
     return personsCD
   }
   
-  func dropAll() -> Bool {
+  func dropVersion() -> Bool{
     var result:Bool! = false;
-    
     let fetchRequestVersion = NSFetchRequest<NSFetchRequestResult>(entityName: "Version")
     if let fetchResults = (try? nsAppDelegate.managedObjectContext.fetch(fetchRequestVersion)) as? [Version]
     {
@@ -221,7 +219,19 @@ class Data: NSObject{
         }
       }
     }
+    do {
+      try nsAppDelegate.managedObjectContext.save()
+      result = true
+    }
+    catch {
+      result = false;
+    }
     
+    return result;
+  }
+  
+  func dropPersons() -> Bool{
+    var result:Bool! = false;
     let fetchRequestPerson = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
     if let fetchResults = (try? nsAppDelegate.managedObjectContext.fetch(fetchRequestPerson)) as? [Person]
     {
@@ -232,6 +242,22 @@ class Data: NSObject{
         }
       }
     }
+    do {
+      try nsAppDelegate.managedObjectContext.save()
+      result = true
+    }
+    catch {
+      result = false;
+    }
+    
+    return result;
+  }
+  
+  func dropAll() -> Bool {
+    var result:Bool! = false;
+    
+    _ = self.dropVersion()
+    _ = self.dropPersons()
 
     do {
       try nsAppDelegate.managedObjectContext.save()
