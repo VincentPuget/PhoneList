@@ -13,6 +13,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
+//    let statusItem = NSStatusBar.system().statusItem(withLength: -2)
+    
+    let statusBar: NSStatusItem! = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    
+    if let button = statusBar.button {
+      let icon: NSImage! = NSImage(named: "StatusBarButtonImage")
+      icon.isTemplate = true
+      button.image = icon
+//      button.action = Selector("togglePopover:")
+//      button.target = self
+    }
+    
+    
   }
   
   func applicationWillTerminate(_ aNotification: Notification) {
