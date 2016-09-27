@@ -7,36 +7,71 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
   
+  var statusItem: NSStatusItem!
+  let popover: NSPopover! = NSPopover()
+  var popoverEvent: Any! = nil
+  
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
-//    let statusItem = NSStatusBar.system().statusItem(withLength: -2)
     
-    let statusBar: NSStatusItem! = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    //menuItem
+    self.statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
-    if let button = statusBar.button {
+    if let button = self.statusItem.button {
       let icon: NSImage! = NSImage(named: "StatusBarButtonImage")
       icon.isTemplate = true
       button.image = icon
-//      button.action = Selector("togglePopover:")
-//      button.target = self
+      button.alternateImage = icon;
+      button.action = #selector(self.tooglePopOver(sender:))
     }
     
+    let storyboard:NSStoryboard = NSStoryboard(name: "Main", bundle: nil)
+    let listViewController: ListViewController = storyboard.instantiateController(withIdentifier: "ListViewController") as! ListViewController
+    self.popover.contentViewController = listViewController
+  }
+  
+  func tooglePopOver(sender: AnyObject){
+    if(self.popover.isShown){
+      self.closePopover(sender: sender)
+    }
+    else{
+      self.showPopover(sender: sender)
+    }
     
   }
+  
+  func closePopover(sender: AnyObject?) {
+    popover.performClose(sender)
+  }
+  
+  func showPopover(sender: AnyObject?) {
+    if let button = statusItem.button {
+      popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+      if(self.popoverEvent == nil){
+        
+        self.popoverEvent = NSEvent.addGlobalMonitorForEvents(matching: NSEventMask.leftMouseUp, handler: {(event: NSEvent) in
+          self.closePopover(sender: self)
+        })
+      }
+    }
+  }
+  
+  
   
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down your application
   }
   
   //qui l'app si la dernière fenetre active est fermée
-  func applicationShouldTerminateAfterLastWindowClosed(_ theApplication: NSApplication) -> Bool
-  {
-    return true;
-  }
+//  func applicationShouldTerminateAfterLastWindowClosed(_ theApplication: NSApplication) -> Bool
+//  {
+//    return true;
+//  }
   
   // MARK: - Core Data stack
   

@@ -6,12 +6,24 @@
 	<dict>
 		<key>PhoneList.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>PhoneListHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>8A1908C41D996A79006EE79C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8A231EA11D8C1F760090AAFF</key>
 		<dict>
 			<key>primary</key>
@@ -23,6 +35,11 @@
 			<true/>
 		</dict>
 		<key>8A231EC01D8C1F770090AAFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8ACB21EA1D995E7300B91A08</key>
 		<dict>
 			<key>primary</key>
 			<true/>

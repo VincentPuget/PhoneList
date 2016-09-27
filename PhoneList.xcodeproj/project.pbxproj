@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A00CFB91D918B3100F6C29D /* CustomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00CFB81D918B3100F6C29D /* CustomRowView.swift */; };
+		8A1908C01D99673A006EE79C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1908BF1D99673A006EE79C /* SettingsViewController.swift */; };
 		8A231EBB1D8C1F770090AAFF /* PhoneListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A231EBA1D8C1F770090AAFF /* PhoneListTests.swift */; };
 		8A231EC61D8C1F770090AAFF /* PhoneListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A231EC51D8C1F770090AAFF /* PhoneListUITests.swift */; };
 		8A231EDF1D8C201F0090AAFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A231ED41D8C201F0090AAFF /* AppDelegate.swift */; };
@@ -47,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		8A00CFB81D918B3100F6C29D /* CustomRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRowView.swift; sourceTree = "<group>"; };
+		8A1908BF1D99673A006EE79C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8A1908D51D997130006EE79C /* PhoneList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoneList.entitlements; sourceTree = "<group>"; };
 		8A231EA21D8C1F760090AAFF /* PhoneList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A231EB11D8C1F760090AAFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A231EB61D8C1F770090AAFF /* PhoneListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhoneListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +126,7 @@
 		8A231EA41D8C1F760090AAFF /* PhoneList */ = {
 			isa = PBXGroup;
 			children = (
+				8A1908D51D997130006EE79C /* PhoneList.entitlements */,
 				8A231EDC1D8C201F0090AAFF /* storyboard */,
 				8A231ED31D8C201F0090AAFF /* class */,
 				8A231ED61D8C201F0090AAFF /* LocalizableStrings */,
@@ -158,6 +162,7 @@
 				8A231ED41D8C201F0090AAFF /* AppDelegate.swift */,
 				8A231EE41D8C21980090AAFF /* Data.swift */,
 				8A231EFD1D8C259B0090AAFF /* ListViewController.swift */,
+				8A1908BF1D99673A006EE79C /* SettingsViewController.swift */,
 				8A231EFF1D8C26130090AAFF /* Utils */,
 			);
 			path = class;
@@ -297,6 +302,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = G6Y46S4A8Y;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					8A231EB51D8C1F770090AAFF = {
 						CreatedOnToolsVersion = 8.0;
@@ -378,6 +388,7 @@
 				8A231EFE1D8C259B0090AAFF /* ListViewController.swift in Sources */,
 				8AA3CF9F1D91284400B0FF0C /* PhoneList.xcdatamodeld in Sources */,
 				8A231F021D8C26130090AAFF /* Const.swift in Sources */,
+				8A1908C01D99673A006EE79C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneList/PhoneList.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = G6Y46S4A8Y;
@@ -542,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneList/PhoneList.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = G6Y46S4A8Y;

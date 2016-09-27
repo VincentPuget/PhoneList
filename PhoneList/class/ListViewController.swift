@@ -38,7 +38,7 @@ class ListViewController: NSViewController {
     DispatchQueue.main.async {
       
       self.view.window!.standardWindowButton(NSWindowButton.documentIconButton)?.isHidden = true
-      self.view.window!.isMovableByWindowBackground = true
+//      self.view.window!.isMovableByWindowBackground = true
       
       self.scrollView.wantsLayer = true
       self.scrollView.layer?.cornerRadius = 10
