@@ -19,6 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ aNotification: Notification) {
     // Insert code here to initialize your application
     
+    // find . -type f -name '*.png' -exec xattr -c {} \;
+    // find . | xargs -0 xattr -c
+    
     //menuItem
     self.statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
