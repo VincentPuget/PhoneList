@@ -156,8 +156,10 @@ extension NSImageView {
       if (statusCode == 200) {
         let data = data;
         var image = NSImage(data: data!)
-        image = ListViewController.setMask(image: image, mask: NSImage(named:"mask.png")!)
-        self.image = image
+        DispatchQueue.main.async {
+          image = ListViewController.setMask(image: image, mask: NSImage(named:"mask.png")!)
+          self.image = image
+        }
       }
       else{
         self.image = NSImage(named:"profil.png")
