@@ -11,9 +11,19 @@ import Cocoa
 class SettingsViewController: NSViewController{
   
   @IBOutlet weak var buttonQuit: NSButton!
+  @IBOutlet weak var labelVersion: NSTextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
+    if let infoDict = Bundle.main.infoDictionary{
+      self.labelVersion.stringValue = "Version : " + (infoDict["CFBundleShortVersionString"] as! String);
+    }
+    else{
+      self.labelVersion.stringValue = "";
+    }
+    
   }
   
   override var representedObject: Any? {

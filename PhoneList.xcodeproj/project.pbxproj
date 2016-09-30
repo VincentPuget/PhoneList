@@ -27,6 +27,7 @@
 		8AA3CFA51D91289700B0FF0C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */; };
 		8AA3CFA61D91289700B0FF0C /* Version+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */; };
 		8AA3CFA71D91289700B0FF0C /* Version+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */; };
+		8AA511401D9EA9B7009D12DD /* toad_pixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5113F1D9EA9B7009D12DD /* toad_pixel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8AA5113F1D9EA9B7009D12DD /* toad_pixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toad_pixel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 		8A9ED43C1D8EE6DB00B776F4 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				8AA5113F1D9EA9B7009D12DD /* toad_pixel.png */,
 				8A808BC91D95742A00959F90 /* StatusBarButtonImage.png */,
 				8A808BC11D952F9300959F90 /* mask.png */,
 				8A9ED43D1D8EE6DB00B776F4 /* profil.png */,
@@ -348,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A231EF91D8C25320090AAFF /* LocalizableStrings.strings in Resources */,
+				8AA511401D9EA9B7009D12DD /* toad_pixel.png in Resources */,
 				8A808BC21D952F9300959F90 /* mask.png in Resources */,
 				8A9ED43E1D8EE6DB00B776F4 /* profil.png in Resources */,
 				8A584AF91D900DEB008ADA98 /* Media.xcassets in Resources */,

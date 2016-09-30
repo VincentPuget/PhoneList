@@ -13,11 +13,11 @@ struct Const {
     static let DEBUG:Bool = true;
   }
   struct Webservice {
-    static let URL: String = ""
-    static let PHONE_ENDPOINT: String = ""
-    static let PHONE_ENDPOINT_$GET_VERSION: String = ""
-    static let X_JSON_MD5_KEY: String = ""
-    static let X_JSON_MD5_VALUE: String = ""
+    static let URL: String = "http://phonelist.jpm-next.com"
+    static let PHONE_ENDPOINT: String = "/index.php"
+    static let PHONE_ENDPOINT_$GET_VERSION: String = "version"
+    static let X_JSON_MD5_KEY: String = "X-Json-MD5"
+    static let X_JSON_MD5_VALUE: String = "c535f3f6b2c646a31d24af41b8c52e3e"
     
     static let PERSON_KEY: String = "persons"
     static let VERSION_KEY: String = "version"
