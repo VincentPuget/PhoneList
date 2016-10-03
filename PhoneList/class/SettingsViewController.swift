@@ -16,7 +16,6 @@ class SettingsViewController: NSViewController{
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
     if let infoDict = Bundle.main.infoDictionary{
       self.labelVersion.stringValue = "Version : " + (infoDict["CFBundleShortVersionString"] as! String);
     }
