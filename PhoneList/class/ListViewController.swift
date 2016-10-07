@@ -26,12 +26,19 @@ class ListViewController: NSViewController {
     self.initUI()
     
     self.getData()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(popOverDiplayed), name: .NSPopoverDidShow, object: nil)
+    
   }
   
   override var representedObject: Any? {
     didSet {
       // Update the view, if already loaded.
     }
+  }
+  
+  func popOverDiplayed(){
+    self.view.window!.makeFirstResponder(self.searchField)
   }
   
   func initUI(){
@@ -42,8 +49,9 @@ class ListViewController: NSViewController {
       
       self.scrollView.wantsLayer = true
       self.scrollView.layer?.cornerRadius = 10
+    
     }
-
+    
   }
   
   func getData(){

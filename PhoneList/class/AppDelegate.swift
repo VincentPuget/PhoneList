@@ -36,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let storyboard:NSStoryboard = NSStoryboard(name: "Main", bundle: nil)
     let listViewController: ListViewController = storyboard.instantiateController(withIdentifier: "ListViewController") as! ListViewController
     self.popover.contentViewController = listViewController
+    
   }
   
   func tooglePopOver(sender: AnyObject){
@@ -62,6 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         })
       }
     }
+    
   }
   
   
