@@ -37,8 +37,12 @@ class ListViewController: NSViewController {
     }
   }
   
-  func popOverDiplayed(){
-    self.view.window!.makeFirstResponder(self.searchField)
+  func popOverDiplayed(notification: AnyObject){
+    if let popOver: NSPopover = notification.object as! NSPopover?{
+      if(popOver.contentViewController?.className == "PhoneList.ListViewController"){
+        self.view.window!.makeFirstResponder(self.searchField)
+      }
+    }
   }
   
   func initUI(){
