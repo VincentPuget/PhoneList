@@ -28,6 +28,8 @@ class ListViewController: NSViewController {
     self.getData()
     
     NotificationCenter.default.addObserver(self, selector: #selector(popOverDiplayed), name: .NSPopoverDidShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ListViewController.getData), name: Notification.Name("_REFRESH_DATA_"), object: nil)
+
     
   }
   

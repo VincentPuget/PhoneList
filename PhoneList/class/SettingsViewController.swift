@@ -11,6 +11,7 @@ import Cocoa
 class SettingsViewController: NSViewController{
   
   @IBOutlet weak var buttonQuit: NSButton!
+  @IBOutlet weak var buttonRefresh: NSButton!
   @IBOutlet weak var labelVersion: NSTextField!
   
   override func viewDidLoad() {
@@ -29,6 +30,10 @@ class SettingsViewController: NSViewController{
     didSet {
       // Update the view, if already loaded.
     }
+  }
+  
+  @IBAction func IBA_buttonRefreshData(_ sender: AnyObject) {
+    NotificationCenter.default.post(name: Notification.Name("_REFRESH_DATA_"), object: nil)
   }
   
   @IBAction func IBA_buttonQuit(_ sender: AnyObject) {
