@@ -530,17 +530,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="191" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vai-vy-Gmk">
-                                        <rect key="frame" x="20" y="19" width="151" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundRect" title="Quitter l'application" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ubi-Mn-O2u">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="IBA_buttonQuit:" target="n3w-u5-b6r" id="Z8V-U8-dQu"/>
-                                        </connections>
-                                    </button>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iC4-Fd-ram">
                                         <rect key="frame" x="20" y="55" width="151" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -550,6 +539,17 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="IBA_buttonRefreshData:" target="n3w-u5-b6r" id="VkD-5G-sZa"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vai-vy-Gmk">
+                                        <rect key="frame" x="20" y="19" width="151" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundRect" title="Quitter l'application" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ubi-Mn-O2u">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="IBA_buttonQuit:" target="n3w-u5-b6r" id="Z8V-U8-dQu"/>
                                         </connections>
                                     </button>
                                 </subviews>
