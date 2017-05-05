@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     if let button = self.statusItem.button {
-      let icon: NSImage! = NSImage(named: "StatusBarButtonImage")
+      let icon: NSImage! = NSImage(named: "StatusBarButtonImage@2x.png")
       icon.isTemplate = true
       button.image = icon
       button.alternateImage = icon;

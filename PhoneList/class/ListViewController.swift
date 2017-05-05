@@ -119,7 +119,7 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
         cellView.imageView?.downloadedFrom(link: person.photo!)
       }
       else{
-        cellView.imageView?.image = NSImage(named:"profil.png")
+        cellView.imageView?.image = NSImage(named:"profil@2x.png")
       }
       
       tableColumn?.headerCell.title = "Photo"
@@ -176,7 +176,7 @@ extension NSImageView {
         }
       }
       else{
-        self.image = NSImage(named:"profil.png")
+        self.image = NSImage(named:"profil@2x.png")
       }
     }.resume()
     return
