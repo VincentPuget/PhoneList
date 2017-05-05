@@ -187,10 +187,10 @@ extension NSImageView {
 extension ListViewController{
   public static func setMask(image: NSImage!, mask: NSImage! ) -> NSImage {
     
-    let imageSource = CGImageSourceCreateWithData((image.tiffRepresentation as! CFData), nil)
+    let imageSource = CGImageSourceCreateWithData((image.tiffRepresentation! as CFData), nil)
     let imageRef = CGImageSourceCreateImageAtIndex(imageSource!, 0, nil)
     
-    let maskSource = CGImageSourceCreateWithData((mask.tiffRepresentation as! CFData), nil)
+    let maskSource = CGImageSourceCreateWithData((mask.tiffRepresentation! as CFData), nil)
     let maskRef = CGImageSourceCreateImageAtIndex(maskSource!, 0, nil)
     
     
