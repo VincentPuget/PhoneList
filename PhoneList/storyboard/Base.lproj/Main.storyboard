@@ -567,7 +567,7 @@
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G94-xf-BE7">
                                 <rect key="frame" x="123" y="93" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="toad_pixel" id="uy7-Sz-KoU"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="vp" id="uy7-Sz-KoU"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eq9-ds-wed">
                                 <rect key="frame" x="20" y="93" width="95" height="17"/>
@@ -592,6 +592,6 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="toad_pixel" width="200" height="200"/>
+        <image name="vp" width="512" height="512"/>
     </resources>
 </document>
