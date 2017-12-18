@@ -23,12 +23,12 @@ class Data: NSObject{
     return Static.instance
   }
   
-  func getPersons(completionHandler: @escaping ([Person]?, NSError?) -> Void ) -> Void {
+  func getPersons(forceUpdate: Bool, completionHandler: @escaping ([Person]?, NSError?) -> Void ) -> Void {
     //get hash of web data
     getMd5CoreData(){ (version, error) -> Void in
       var url: String! = Const.Webservice.URL + Const.Webservice.PHONE_ENDPOINT + "?"
       //if version stored in coredata, we add version on url request
-      if(error == nil){
+      if(error == nil && !forceUpdate){
         url = url + Const.Webservice.PHONE_ENDPOINT_$GET_VERSION + "=" + version!
       }
       print(url)
@@ -57,6 +57,11 @@ class Data: NSObject{
                 completionHandler(personsSorted, nil)
               }
             }
+          }
+          else if(error?.code == 10000){
+            let error = NSError(domain: "NO_NETWORK", code: 10000, userInfo: nil)
+            L.v(error.domain as AnyObject!)
+            completionHandler(nil, error)
           }
           else{
             L.v(error?.domain as AnyObject!)
@@ -130,10 +135,11 @@ class Data: NSObject{
     let task = session.dataTask(with: urlRequest as URLRequest) {
       (data, response, error) -> Void in
       
-      let httpResponse: HTTPURLResponse! = response as! HTTPURLResponse
-      let statusCode: Int! = httpResponse.statusCode
-      let statusCodeF: Float! = Float(statusCode)
-      let firstCharStatusCode: Float = floor(statusCodeF / 100)
+      var statusCode: Int?
+      let httpResponse: HTTPURLResponse? = response as? HTTPURLResponse
+      statusCode = httpResponse?.statusCode != nil ? httpResponse?.statusCode : 10000
+      let statusCodeF: Float? = Float(statusCode!)
+      let firstCharStatusCode: Float = floor(statusCodeF! / 100)
       
       if (statusCode == 200) {
         do{
@@ -158,11 +164,17 @@ class Data: NSObject{
         L.v(error.domain as AnyObject!)
         completionHandler(nil, error)
       }
+      else if(statusCode == 10000){
+        let error = NSError(domain: "ERROR_NO_NETWORK", code: 10000, userInfo: nil)
+        L.v(error.domain as AnyObject!)
+        completionHandler(nil, error)
+      }
       else if(firstCharStatusCode == 4 || firstCharStatusCode == 5){
         let error = NSError(domain: "ERROR_NETWORK", code: 2000, userInfo: nil)
         L.v(error.domain as AnyObject!)
         completionHandler(nil, error)
       }
+      
     }
     
     task.resume()
@@ -173,6 +185,7 @@ class Data: NSObject{
     let newVersion:Version! = NSEntityDescription.insertNewObject(forEntityName: "Version", into: nsAppDelegate.managedObjectContext) as! Version
     newVersion.md5 = version;
     newVersion.lastModified = NSDate();
+    
     do {
       try nsAppDelegate.managedObjectContext.save()
       L.v("saveVersion OK" as AnyObject!)

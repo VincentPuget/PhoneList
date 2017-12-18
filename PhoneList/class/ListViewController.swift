@@ -25,10 +25,10 @@ class ListViewController: NSViewController {
     
     self.initUI()
     
-    self.getData()
+    self.getData(forceUpdate: false)
     
     NotificationCenter.default.addObserver(self, selector: #selector(popOverDiplayed), name: .NSPopoverDidShow, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(ListViewController.getData), name: Notification.Name("_REFRESH_DATA_"), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ListViewController.getDataFromNotification), name: Notification.Name("_REFRESH_DATA_"), object: nil)
 
     
   }
@@ -60,11 +60,19 @@ class ListViewController: NSViewController {
     
   }
   
-  func getData(){
-    Data.instance.getPersons(){ (persons, error) -> Void in
+  func getDataFromNotification(){
+    if(Data.instance.dropAll()){
+      self.getData(forceUpdate: true)
+    } else {
+      self.getData(forceUpdate: true)
+    }
+  }
+  
+  func getData(forceUpdate: Bool){
+    Data.instance.getPersons(forceUpdate: forceUpdate){ (persons, error) -> Void in
       if(error != nil) {
         if(error?.code == 8000){
-          self.getData()
+          self.getData(forceUpdate: true)
         }
       }
       else{
@@ -115,7 +123,7 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
       cellView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
       cellView.imageView?.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
       
-      if(person.photo != ""){
+      if(person.photo != "" && person.photo != nil){
         cellView.imageView?.downloadedFrom(link: person.photo!)
       }
       else{
@@ -126,17 +134,17 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
     }
     else if(tableColumn!.identifier == "firstname")
     {
-      cellView.textField!.stringValue = person.firstname!
+      cellView.textField?.stringValue = person.firstname != nil ? person.firstname! : "-"
       tableColumn?.headerCell.title = "Prénom"
     }
     else if(tableColumn!.identifier == "lastname")
     {
-      cellView.textField!.stringValue = person.lastname!
+      cellView.textField?.stringValue = person.lastname != nil ? person.lastname! : "-"
       tableColumn?.headerCell.title = "Nom"
     }
     else if(tableColumn!.identifier == "number")
     {
-      cellView.textField!.stringValue = person.number!
+      cellView.textField?.stringValue = person.number != nil ? person.number! : "-"
       tableColumn?.headerCell.title = "Numéro"
     }
     
