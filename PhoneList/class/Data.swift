@@ -24,86 +24,52 @@ class Data: NSObject{
   }
   
   func getPersons(forceUpdate: Bool, completionHandler: @escaping ([Person]?, NSError?) -> Void ) -> Void {
-    //get hash of web data
-    getMd5CoreData(){ (version, error) -> Void in
-      var url: String! = Const.Webservice.URL + Const.Webservice.PHONE_ENDPOINT + "?"
-      //if version stored in coredata, we add version on url request
-      if(error == nil && !forceUpdate){
-        url = url + Const.Webservice.PHONE_ENDPOINT_$GET_VERSION + "=" + version!
-      }
-      print(url)
-      //get json online
-      self.getOnlineData(url: url) { (json, error) -> Void in
-        if(error != nil){
-          if(error?.code == 3000 || error?.code == 1000 || error?.code == 2000){
-            //if 3000 error ==> it mean 304 || error JSON || error network
-            // get coredata data
-            self.getPersonsCoreData(){ (persons, error) -> Void in
-              if(error != nil){
-                //if no coredata stored, delete all and restart
-                if(self.dropAll() == true){
-                  let error = NSError(domain: "DROP_ALL_RESTART", code: 8000, userInfo: nil)
-                  L.v(error.domain as AnyObject!)
-                  completionHandler(nil, error)
-                }
-                else{
-                  let error = NSError(domain: "DROP_ALL_BUG", code: 9000, userInfo: nil)
-                  L.v(error.domain as AnyObject!)
-                  completionHandler(nil, error)
-                }
+    
+    let url: String! = Const.Webservice.URL + Const.Webservice.PHONE_ENDPOINT
+//    print(url)
+    
+    self.getOnlineData(url: url) { (json, error) -> Void in
+      if(error != nil){
+        if(error?.code == 3000 || error?.code == 1000 || error?.code == 2000){
+          //if 3000 error ==> it mean 304 || error JSON || error network
+          // get coredata data
+          self.getPersonsCoreData(){ (persons, error) -> Void in
+            if(error != nil){
+              //if no coredata stored, delete all and restart
+              if(self.dropAll() == true){
+                let error = NSError(domain: "DROP_ALL_RESTART", code: 8000, userInfo: nil)
+                L.v(error.domain as AnyObject!)
+                completionHandler(nil, error)
               }
               else{
-                let personsSorted: [Person] = (persons?.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })!
-                completionHandler(personsSorted, nil)
+                let error = NSError(domain: "DROP_ALL_BUG", code: 9000, userInfo: nil)
+                L.v(error.domain as AnyObject!)
+                completionHandler(nil, error)
               }
             }
-          }
-          else if(error?.code == 10000){
-            let error = NSError(domain: "NO_NETWORK", code: 10000, userInfo: nil)
-            L.v(error.domain as AnyObject!)
-            completionHandler(nil, error)
-          }
-          else{
-            L.v(error?.domain as AnyObject!)
-            completionHandler(nil, error)
+            else{
+              let personsSorted: [Person] = (persons?.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })!
+              completionHandler(personsSorted, nil)
+            }
           }
         }
-        else {
-          _ = self.dropAll()
-          let personKey: String! = Const.Webservice.PERSON_KEY
-          let versionKey: String! = Const.Webservice.VERSION_KEY
-          if let versionFromUrl: String = json?[versionKey] as? String{
-            _ = self.saveVersion(version: versionFromUrl)
-          }
-          if let persons:NSArray = json?[personKey] as? NSArray{
-            let personsCD: [Person] = self.savePersons(persons: persons)
-            let personsCDSorted: [Person] = (personsCD.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })
-            completionHandler(personsCDSorted, nil)
-          }
+        else if(error?.code == 10000){
+          let error = NSError(domain: "NO_NETWORK", code: 10000, userInfo: nil)
+          L.v(error.domain as AnyObject!)
+          completionHandler(nil, error)
+        }
+        else{
+          L.v(error?.domain as AnyObject!)
+          completionHandler(nil, error)
         }
       }
-      
-    }
-    return
-  }
-  
-  func getMd5CoreData(completionHandler: @escaping (String?, NSError?) -> Void ) -> Void {
-    var version:Version;
-    
-    var md5: String = "";
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Version")
-    if let fetchResults = (try? nsAppDelegate.managedObjectContext.fetch(fetchRequest)) as? [Version]
-    {
-      if(fetchResults.count > 0)
-      {
-        version = fetchResults[0] as Version
-        md5 = version.md5!
-        completionHandler(md5, nil)
-      }
-      else{
-        let error = NSError(domain: "ERROR_NO_CORE_DATA_VERSION", code: 6000, userInfo: nil)
-        L.v(error.domain as AnyObject!)
-        completionHandler(nil, error)
+      else {
+        _ = self.dropAll()
+        if let persons:NSArray = json as NSArray?{
+          let personsCD: [Person] = self.savePersons(persons: persons)
+          let personsCDSorted: [Person] = (personsCD.sorted { $0.firstname?.localizedCaseInsensitiveCompare($1.firstname!) == ComparisonResult.orderedAscending })
+          completionHandler(personsCDSorted, nil)
+        }
       }
     }
     return
@@ -127,10 +93,18 @@ class Data: NSObject{
     return
   }
   
-  func getOnlineData(url: String!, completionHandler: @escaping (AnyObject?, NSError?) -> Void ) -> Void {
+  func getOnlineData(url: String!, completionHandler: @escaping ([NSDictionary]?, NSError?) -> Void ) -> Void {
+    
+    let loginString: String = String(format: "%@:%@", Const.Webservice.identifier, Const.Webservice.password)
+    let loginData = loginString.data(using: String.Encoding.utf8)!
+    let base64LoginString = loginData.base64EncodedString()
+    let basicBase64LoginString: String = String(format: "%@%@", "Basic ", base64LoginString)
+    
     let requestURL: NSURL = NSURL(string: url)!
     let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL as URL)
-    urlRequest.setValue(Const.Webservice.X_JSON_MD5_VALUE, forHTTPHeaderField:Const.Webservice.X_JSON_MD5_KEY)
+    urlRequest.httpMethod = "GET";
+    
+    urlRequest.setValue(basicBase64LoginString, forHTTPHeaderField: "Authorization")
     let session = URLSession.shared
     let task = session.dataTask(with: urlRequest as URLRequest) {
       (data, response, error) -> Void in
@@ -143,7 +117,7 @@ class Data: NSObject{
       
       if (statusCode == 200) {
         do{
-          if let json:NSDictionary = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
+          if let json: [NSDictionary] = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [NSDictionary] {
             completionHandler(json, nil)
           }
           else{
@@ -200,9 +174,14 @@ class Data: NSObject{
     var personsCD: [Person] = []
     for person in persons{
       let personDict: NSDictionary = person as! NSDictionary
-      
       let newPerson:Person! = NSEntityDescription.insertNewObject(forEntityName: "Person", into: nsAppDelegate.managedObjectContext) as! Person
-      newPerson.photo = personDict["photo"] as? String
+      
+      var photoUrl: String = ""
+      if let photoObject: NSDictionary = (personDict["photo"] as? NSDictionary) {
+        photoUrl = String(format:"%@%@", Const.Webservice.URL, (photoObject["url"] as? String)!)
+      }
+      newPerson.photo = photoUrl
+      
       newPerson.firstname = personDict["firstname"] as? String
       newPerson.lastname = personDict["lastname"] as? String
       newPerson.number = personDict["number"] as? String
