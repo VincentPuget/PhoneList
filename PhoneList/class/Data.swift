@@ -26,7 +26,6 @@ class Data: NSObject{
   func getPersons(forceUpdate: Bool, completionHandler: @escaping ([Person]?, NSError?) -> Void ) -> Void {
     
     let url: String! = Const.Webservice.URL + Const.Webservice.PHONE_ENDPOINT
-//    print(url)
     
     self.getOnlineData(url: url) { (json, error) -> Void in
       if(error != nil){
