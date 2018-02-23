@@ -184,6 +184,7 @@ class Data: NSObject{
       newPerson.firstname = personDict["firstname"] as? String
       newPerson.lastname = personDict["lastname"] as? String
       newPerson.number = personDict["number"] as? String
+      newPerson.direct_line = personDict["direct_line"] as? String
       newPerson.fullname = String(format: "%@ %@", (personDict["firstname"] as? String)!, (personDict["lastname"] as? String)!)
       personsCD.append(newPerson)
       

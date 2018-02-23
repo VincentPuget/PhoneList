@@ -147,6 +147,11 @@ extension ListViewController:NSTableViewDelegate , NSTableViewDataSource
       cellView.textField?.stringValue = person.number != nil ? person.number! : "-"
       tableColumn?.headerCell.title = "Numéro"
     }
+    else if(tableColumn!.identifier == "direct_line")
+    {
+      cellView.textField?.stringValue = person.direct_line != nil ? person.direct_line! : "-"
+      tableColumn?.headerCell.title = "Ligne directe"
+    }
     
     return cellView
   }

@@ -21,11 +21,11 @@
 		8A584AF91D900DEB008ADA98 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A584AF81D900DEB008ADA98 /* Media.xcassets */; };
 		8A5D94141EC1AD9200628853 /* vp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A5D94131EC1AD9200628853 /* vp@2x.png */; };
 		8A808BC21D952F9300959F90 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A808BC11D952F9300959F90 /* mask.png */; };
-		8AA3CF9F1D91284400B0FF0C /* PhoneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */; };
 		8AA3CFA41D91289700B0FF0C /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA01D91289700B0FF0C /* Person+CoreDataClass.swift */; };
 		8AA3CFA51D91289700B0FF0C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */; };
 		8AA3CFA61D91289700B0FF0C /* Version+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */; };
 		8AA3CFA71D91289700B0FF0C /* Version+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */; };
+		8AC103962040562200DF1CCA /* PhoneList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AC103942040562200DF1CCA /* PhoneList.xcdatamodeld */; };
 		8AF76F0B1EB88CDD00C89E2F /* profil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AF76F081EB88CDD00C89E2F /* profil@2x.png */; };
 		8AF76F0C1EB88CDD00C89E2F /* StatusBarButtonImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AF76F091EB88CDD00C89E2F /* StatusBarButtonImage@2x.png */; };
 /* End PBXBuildFile section */
@@ -70,11 +70,12 @@
 		8A5D94131EC1AD9200628853 /* vp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vp@2x.png"; sourceTree = "<group>"; };
 		8A808BBF1D95099D00959F90 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8A808BC11D952F9300959F90 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
-		8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneList.xcdatamodel; sourceTree = "<group>"; };
 		8AA3CFA01D91289700B0FF0C /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Version+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8AC103952040562200DF1CCA /* PhoneList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneList.xcdatamodel; sourceTree = "<group>"; };
+		8AC10397204056AC00DF1CCA /* PhoneList_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhoneList_.xcdatamodel; sourceTree = "<group>"; };
 		8AF76F081EB88CDD00C89E2F /* profil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profil@2x.png"; sourceTree = "<group>"; };
 		8AF76F091EB88CDD00C89E2F /* StatusBarButtonImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StatusBarButtonImage@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,7 +186,7 @@
 				8AA3CFA11D91289700B0FF0C /* Person+CoreDataProperties.swift */,
 				8AA3CFA21D91289700B0FF0C /* Version+CoreDataClass.swift */,
 				8AA3CFA31D91289700B0FF0C /* Version+CoreDataProperties.swift */,
-				8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */,
+				8AC103942040562200DF1CCA /* PhoneList.xcdatamodeld */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -385,12 +386,12 @@
 				8A231F031D8C26130090AAFF /* L.swift in Sources */,
 				8A00CFB91D918B3100F6C29D /* CustomRowView.swift in Sources */,
 				8AA3CFA41D91289700B0FF0C /* Person+CoreDataClass.swift in Sources */,
+				8AC103962040562200DF1CCA /* PhoneList.xcdatamodeld in Sources */,
 				8A231EDF1D8C201F0090AAFF /* AppDelegate.swift in Sources */,
 				8A231EE51D8C21980090AAFF /* Data.swift in Sources */,
 				8AA3CFA51D91289700B0FF0C /* Person+CoreDataProperties.swift in Sources */,
 				8AA3CFA61D91289700B0FF0C /* Version+CoreDataClass.swift in Sources */,
 				8A231EFE1D8C259B0090AAFF /* ListViewController.swift in Sources */,
-				8AA3CF9F1D91284400B0FF0C /* PhoneList.xcdatamodeld in Sources */,
 				8A231F021D8C26130090AAFF /* Const.swift in Sources */,
 				8A1908C01D99673A006EE79C /* SettingsViewController.swift in Sources */,
 			);
@@ -681,12 +682,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8AA3CF9D1D91284400B0FF0C /* PhoneList.xcdatamodeld */ = {
+		8AC103942040562200DF1CCA /* PhoneList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */,
+				8AC10397204056AC00DF1CCA /* PhoneList_.xcdatamodel */,
+				8AC103952040562200DF1CCA /* PhoneList.xcdatamodel */,
 			);
-			currentVersion = 8AA3CF9E1D91284400B0FF0C /* PhoneList.xcdatamodel */;
+			currentVersion = 8AC10397204056AC00DF1CCA /* PhoneList_.xcdatamodel */;
 			path = PhoneList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
