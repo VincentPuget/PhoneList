@@ -12,7 +12,7 @@ import Foundation
 
 class Data: NSObject{
   
-  let nsAppDelegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
+  let nsAppDelegate: AppDelegate = NSApplication.shared.delegate as! AppDelegate
   
   class var instance : Data
   {
@@ -37,12 +37,12 @@ class Data: NSObject{
               //if no coredata stored, delete all and restart
               if(self.dropAll() == true){
                 let error = NSError(domain: "DROP_ALL_RESTART", code: 8000, userInfo: nil)
-                L.v(error.domain as AnyObject!)
+                L.v(error.domain as Any)
                 completionHandler(nil, error)
               }
               else{
                 let error = NSError(domain: "DROP_ALL_BUG", code: 9000, userInfo: nil)
-                L.v(error.domain as AnyObject!)
+                L.v(error.domain as Any)
                 completionHandler(nil, error)
               }
             }
@@ -54,11 +54,11 @@ class Data: NSObject{
         }
         else if(error?.code == 10000){
           let error = NSError(domain: "NO_NETWORK", code: 10000, userInfo: nil)
-          L.v(error.domain as AnyObject!)
+          L.v(error.domain as Any)
           completionHandler(nil, error)
         }
         else{
-          L.v(error?.domain as AnyObject!)
+          L.v(error?.domain as Any)
           completionHandler(nil, error)
         }
       }
@@ -85,7 +85,7 @@ class Data: NSObject{
       }
       else{
         let error = NSError(domain: "ERROR_NO_CORE_DATA_PERSONS", code: 6000, userInfo: nil)
-        L.v(error.domain as AnyObject!)
+        L.v(error.domain as Any)
         completionHandler(nil, error)
       }
     }
@@ -121,30 +121,30 @@ class Data: NSObject{
           }
           else{
             let error = NSError(domain: "ERROR_JSON", code: 1000, userInfo: nil)
-            L.v(error.domain as AnyObject!)
+            L.v(error.domain as Any)
             completionHandler(nil, error)
             return
           }
         }
         catch {
           let error = NSError(domain: "ERROR_JSON", code: 1000, userInfo: nil)
-          L.v(error.domain as AnyObject!)
+          L.v(error.domain as Any)
           completionHandler(nil, error)
         }
       }
       else if(statusCode == 304){
         let error = NSError(domain: "ERROR_304_NOT_MODIFIED", code: 3000, userInfo: nil)
-        L.v(error.domain as AnyObject!)
+        L.v(error.domain as Any)
         completionHandler(nil, error)
       }
       else if(statusCode == 10000){
         let error = NSError(domain: "ERROR_NO_NETWORK", code: 10000, userInfo: nil)
-        L.v(error.domain as AnyObject!)
+        L.v(error.domain as Any)
         completionHandler(nil, error)
       }
       else if(firstCharStatusCode == 4 || firstCharStatusCode == 5){
         let error = NSError(domain: "ERROR_NETWORK", code: 2000, userInfo: nil)
-        L.v(error.domain as AnyObject!)
+        L.v(error.domain as Any)
         completionHandler(nil, error)
       }
       
@@ -155,13 +155,13 @@ class Data: NSObject{
   }
   
   func saveVersion(version: String!) -> Bool{
-    let newVersion:Version! = NSEntityDescription.insertNewObject(forEntityName: "Version", into: nsAppDelegate.managedObjectContext) as! Version
+    let newVersion:Version! = NSEntityDescription.insertNewObject(forEntityName: "Version", into: nsAppDelegate.managedObjectContext) as? Version
     newVersion.md5 = version;
     newVersion.lastModified = NSDate();
     
     do {
       try nsAppDelegate.managedObjectContext.save()
-      L.v("saveVersion OK" as AnyObject!)
+      L.v("saveVersion OK" as Any)
       return true
     }
     catch {
@@ -173,7 +173,7 @@ class Data: NSObject{
     var personsCD: [Person] = []
     for person in persons{
       let personDict: NSDictionary = person as! NSDictionary
-      let newPerson:Person! = NSEntityDescription.insertNewObject(forEntityName: "Person", into: nsAppDelegate.managedObjectContext) as! Person
+      let newPerson:Person! = NSEntityDescription.insertNewObject(forEntityName: "Person", into: nsAppDelegate.managedObjectContext) as? Person
       
       var photoUrl: String = ""
       if let photoObject: NSDictionary = (personDict["photo"] as? NSDictionary) {
@@ -190,7 +190,7 @@ class Data: NSObject{
       
       do {
         try nsAppDelegate.managedObjectContext.save()
-        L.v("savePerson OK" as AnyObject!)
+        L.v("savePerson OK" as Any)
       }
       catch {
         

@@ -37,7 +37,7 @@ class SettingsViewController: NSViewController{
   }
   
   @IBAction func IBA_buttonQuit(_ sender: AnyObject) {
-    NSApplication.shared().terminate(self)
+    NSApplication.shared.terminate(self)
   }
   
 }

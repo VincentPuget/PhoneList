@@ -10,14 +10,14 @@ import Cocoa
 
 struct L
 {
-    static func v(_ anyObjects:AnyObject!...) -> Void
+    static func v(_ anyObjects:Any?...) -> Void
     {
         if(Const.App.DEBUG)
         {
-            for anyObject:AnyObject! in anyObjects
+            for anyObject:Any? in anyObjects
             {
               if(anyObject != nil){
-                print(anyObject);
+                print(anyObject as Any);
               }
             }
         }

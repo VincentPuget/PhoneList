@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // find . | xargs -0 xattr -c
     
     //menuItem
-    self.statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     if let button = self.statusItem.button {
       let icon: NSImage! = NSImage(named: "StatusBarButtonImage@2x.png")
@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
   }
   
-  func tooglePopOver(sender: AnyObject){
+  @objc func tooglePopOver(sender: AnyObject){
     if(self.popover.isShown){
       self.closePopover(sender: sender)
     }
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
       if(self.popoverEvent == nil){
         
-        self.popoverEvent = NSEvent.addGlobalMonitorForEvents(matching: NSEventMask.leftMouseUp, handler: {(event: NSEvent) in
+        self.popoverEvent = NSEvent.addGlobalMonitorForEvents(matching: NSEvent.EventTypeMask.leftMouseUp, handler: {(event: NSEvent) in
           self.closePopover(sender: self)
         })
       }
@@ -147,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     if shouldFail || (failError != nil) {
       // Report any error we got.
       if let error = failError {
-        NSApplication.shared().presentError(error)
+        NSApplication.shared.presentError(error)
         fatalError("Unresolved error: \(error), \(error.userInfo)")
       }
       fatalError("Unsresolved error: \(failureReason)")
@@ -176,7 +176,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         try managedObjectContext.save()
       } catch {
         let nserror = error as NSError
-        NSApplication.shared().presentError(nserror)
+        NSApplication.shared.presentError(nserror)
       }
     }
   }
@@ -186,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     return managedObjectContext.undoManager
   }
   
-  func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
+  func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
     // Save changes in the application's managed object context before the application terminates.
     
     if !managedObjectContext.commitEditing() {
@@ -219,7 +219,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       alert.addButton(withTitle: cancelButton)
       
       let answer = alert.runModal()
-      if answer == NSAlertSecondButtonReturn {
+      if answer == NSApplication.ModalResponse.alertSecondButtonReturn {
         return .terminateCancel
       }
     }
